@@ -1,0 +1,113 @@
+usage method 1: cli_ashevc.exe cfg_path cfg_file
+usage method 2: cli_ashevc.exe allargs
+usage method 3: cli_ashevc.exe [options] infile -o outfile
+
+Executable Options
+   -h/--help                   show help text and exit
+
+Options for usage method 3
+
+Input:
+   -f                          encoder configure file name
+   --input                     yuv input file name
+   --input-bitdepth            bitdepth of yuv input file. 8 or 10. default 8
+   --width                     source picture width
+   --height                    source picture height
+   --fps                       source picture framerate. default 25
+   --frames                    number of frames to encode. -1 means loop encode mode
+   --seek                      first frame to encode
+   --chroma-format             0: YUV400; 1: YUV420; 2: YUV422. default 1
+
+Output:
+   --output                    output bitstream file name
+   --recon                     reconstruction yuv file (only valid for debug or release_withtrace)
+   --trace-general             general trace file name (only valid for debug or release_withtrace)
+   --trace-cabac               cabac trace file name (only valid for debug or release_withtrace)
+   --trace-prdy                y prediction trace file name (only valid for debug or release_withtrace)
+   --trace-prduv               uv prediction trace file name (only valid for debug or release_withtrace)
+   --log-level                 logging level (only valid for debug or release_withtrace)
+                               0: no log; 1: general log. 2: log for each frame. default 1
+   --trace-level               trace level (only valid for debug or release_withtrace)
+                               0: no trace; 1: output reconstruction; 2: output trace-general;
+                               4: output trace-cabac; 8: output trace-prdy; 16: output trace-prduv. default 0
+
+Quality Metrics Methods:
+   --psnr                      1: report psnr result; 0: don't report psnr result. default 0
+   --ssim                      1: report ssim result; 0: don't report ssim result. default 0
+
+Presets:
+   -p/--preset                 quality level, 1 ~ 6: 1 is fastest, 6 is slowest. default 5
+
+CU&TU settings:
+   --max-cu-width              max cu width, can be 64, 32, 16. default 64
+                               for example: 1. max-cu-width = 64, max-cu-depth = 4, then min-cu-width = 8
+   --max-tu-log2width          max tu log2width, can be 5, 4. default 5
+   --min-tu-log2width          min tu log2width, should less than max-tu-log2width. default 2
+   --tu-intra-depth            max tu recursive depth for intra cu. default 1
+   --tu-inter-depth            max tu recursive depth for inter cu. default 1
+
+GOP Settings
+   --keyint                    max idr period in frames. default 100
+   --ref                       max reference frames for each frame. default 1
+   --bpyramid                  1: b-frame can be used as references; 0: b-frame can't be reference-frame. default 1
+   --bframes                   max number of consecutive b-frames. default 3
+   --opengop                   1: enable opengop; 0: disable opengop. default 0
+   --decoding-refresh-type     Random Access 0: none; 1: CDR; 2:IDR
+   --badapt                    adaptive b-frame scheduling, 0: none; 1 - fast; 2 - full (trellis). default value is related with preset
+
+Encoder Tools:
+   --max-merge                 max merge candidate, should <= 5. default 3
+   --pintra                    1: enable intra in p-frame; 0: disable intra in p-frame. default 1
+   --bintra                    1: enable intra in b-frame; 0: disable intra in b-frame. default value is related with preset
+   --rect                      1: enable rect pu(INTER_2NxN, INTER_Nx2N); 0: disable rect pu. default 0
+   --amp                       1: enable amp pu; 0: disable amp pu. default 0
+   --dbl                       1: enable in-loop deblock filter; 0: disable in-loop deblock filter. default 1
+   --signhide                  1: enable signhide; 0: disable. default 0
+   --rps                       1: rps in slice header; 0: rps in ps. default 1
+   --allow-conformance         1: enable allow conformance window; 0: disable. default 1
+   --log2-parallel-merge-level default 2
+   --temporal-mvp              1: enable temporal mvp; 0 disabled. default 1
+   --constrained-intra-pred    1: Constrained intra prediction (use only intra coded reference pixels);0: disabled. default 0
+   --me-method                 0: dia; 1: hex; 2: umh; 9: full. defaut 1
+   --me-range                  search range. default 32
+   --subpel-refine             0: fullpel only; 1: sad mode decision, one qpel iteration; 2: satd mode decision;
+                               3-5: Progressively more qpel; 6: RD mode decision for I/P-frames;
+                               7: RD mode decision for all frames; 8: RD refinement for I/P-frames;
+                               9: RD refinement for all frames; 11: Full RD: disable all early terminations;
+   --chroma-me                 1: enable me for chroma; 0: disable
+   --interlace-mode            1: interlace; 0: progressive. default 0, only support 0 now
+   --repeat-headers            1: repeat header(sps,pps,vps,etc) for key frame; 0: disable. default 0
+   --acces-delimiters          1: enable acces delimiters; 0: disable. default 0
+   --hrdsei                    1: enable emit hrd sei; 0: disable. default 0
+   --infosei                   1: enable emit info sei; 0: disable. default 0
+   --decode-hashsei            1: enable emit decoder hash sei; 0: disable. default 0
+   --interp-method             0: realtime interpolate; 1: pre-interpolate. 2: pre-interpolate for partial mv. default 0
+
+RateControl:
+   --rc                        ratecontrol type. default 0
+                               0: fixquant; 1: CBR; 3: VBR; 8: ABR; 9: CQP; 10: CRF
+   --qp                        quantization parameter. default 26
+   --bitrate                   target bitrate(kbps). default 0
+   --scenecut_threshold        0: disable scenecut; 40: enable scenecut. default 0
+   --vbv-maxrate               max bitrate(kbps). default 0
+   --vbv-bufsize               vbv buffer size(kbit). default 0
+   --vbv-init-time             vbv buffer init time(ms). default 0
+   --ratetol                   <float> tolerance of ABR ratecontrol and vbv. default 1.0
+   --rf-constant               <float> Quality-based VBR (0-51). default 23.0
+   --qpmin                     <integer> minimum qp. default 0
+   --qpmax                     <integer> maximum qp. default 51
+   --qpstep                    <integer> max qp step. default 4
+   --ipratio                   <float> QP factor between I and P. default 1.40
+   --pbratio                   <float> QP factor between P and B. default 1.30
+   --aq-mode                   adaptive quant. 0: disable; 1: variance AQ (complexity mask); 2: auto-variance AQ (experimental). default 0
+   --aq-strength               <float> Reduces blocking and blurring in flat and textured areas. default 1.0
+   --lookaheadnum              <integer> Number of frames for frametype lookahead. default 20
+   --lowres                    <integer> preanalyze resolution. 0: auto; 1: 1/2; 2: 1/4
+   --pass                      <integer> 0: 1pass; 1: first_pass_of_2pass; 2: second_pass_of_2pass. default 0
+
+Encoding Speed
+   --asm                       0: pure c; 1: use SIMD optimizations. default 1
+   --frame-threads             frame thread number. default 1
+   --wpp-threads               wpp thread number. default 0
+   --lookahead-threads         lookahead thread number. default 4
+
