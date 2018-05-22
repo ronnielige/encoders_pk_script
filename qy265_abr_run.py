@@ -67,8 +67,14 @@ for p in qy265_presets:
 
             cur_task_num = cur_task_num + 1
             print "process %4d / %4d"%(cur_task_num, total_task_num)
+
+            if b_del_bitstream == True:
+                cmdlist = (cmd, del_bitstream_cmd, )
+            else:
+                cmdlist = (cmd, )
+
             if b_cover_result or not is_log_intact(out_log):
-                TM.newTaskList((cmd, del_bitstream_cmd,), (out_log, ))
+                TM.newTaskList(cmdlist, (out_log, ))
         TM.clearAllTaskList() # wait until all task finished
 
         # collect result for this yuv

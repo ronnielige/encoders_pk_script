@@ -1,5 +1,5 @@
-hd_yuv_path    = "D://HEVC_YUV_SEQ//"
-fourk_yuv_path = "D://HEVC_YUV_SEQ//4K_yuv//"
+hd_yuv_path    = "E://HEVC_YUV_SEQ//"
+fourk_yuv_path = "E://HEVC_YUV_SEQ//4K_yuv//"
 
 hd_test_yuvs = ["Bbasketballdrive",
                 "Bbqterrace",

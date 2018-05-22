@@ -20,8 +20,9 @@ x265_presets  = ["ultrafast", "superfast", "faster", "fast", "medium", "slow", "
 as265_presets = [1, 2, 3, 4, 5, 6]
 qy265_presets = [ "ultrafast", "superfast", "veryfast", "fast", "medium", "slow", "veryslow", "placebo"]
 
-worker_number  = 2     # set how many workers to run
-b_cover_result = False # if result of case already exists, should rerun this case
+worker_number   = 2     # set how many workers to run
+b_cover_result  = False # if result of case already exists, should rerun this case
+b_del_bitstream = False # whether delete bitstream
 
 # encoder key parameters
 enc_frames = 50
