@@ -14,7 +14,7 @@ if not os.path.exists(qy265_fullpath):
     print "Error, qy265 exe not exist."
     exit(1)
 
-final_result_file = out_path + "_qy265_abr_result.log"
+final_result_file = out_path + "_qy265_abr_" + getDateTime() + ".log"
 ClearFile(final_result_file)
 AppendLine(final_result_file, "       target bitrate     bitrate(kbps)   Y      U      V       enc_fps") # title
 

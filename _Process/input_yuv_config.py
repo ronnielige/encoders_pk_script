@@ -11,6 +11,7 @@ fourk_test_yuvs = ["4K_football",
                    "4K_wudao",
                    ]
 test_yuvs = hd_test_yuvs + fourk_test_yuvs
+test_yuvs = hd_test_yuvs
 
 yuv_fullpath = {
     "Bbasketballdrive": hd_yuv_path + "Bbasketballdrive_1920x1080_8_50_500.yuv",

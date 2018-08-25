@@ -15,7 +15,7 @@ if not os.path.exists(x264_fullpath):
     print "Error, x264 exe not exist."
     exit(1)
 
-final_result_file = out_path + "_x264_cbr_result.log"
+final_result_file = out_path + "_x264_cbr_" + getDateTime() + ".log"
 ClearFile(final_result_file)
 AppendLine(final_result_file, "       target bitrate     bitrate(kbps)   Y      U      V       enc_fps") # title
 

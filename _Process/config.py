@@ -16,8 +16,8 @@ fourk_bitrates = [14000, 12000, 10000, 8000, 6000]
 #x264_presets  = ["ultrafast","superfast","veryfast","faster","fast","medium","slow","slower","veryslow","placebo"]
 #x265_presets  = ["ultrafast","superfast","veryfast","faster","fast","medium","slow","slower","veryslow","placebo"]
 x264_presets  = ["ultrafast", "superfast", "faster", "fast", "medium", "slow", "veryslow"]
-x265_presets  = ["ultrafast", "superfast", "faster", "fast", "medium", "slow", "veryslow"]
-as265_presets = [1, 2, 3, 4, 5, 6]
+x265_presets  = [ "fast", "medium", "slow",]
+as265_presets = [1, 2, 3, 4, 5]
 qy265_presets = [ "ultrafast", "superfast", "veryfast", "fast", "medium", "slow", "veryslow", "placebo"]
 
 worker_number   = 2     # set how many workers to run
@@ -25,7 +25,7 @@ b_cover_result  = False # if result of case already exists, should rerun this ca
 b_del_bitstream = False # whether delete bitstream
 
 # encoder key parameters
-enc_frames = 50
+enc_frames = 100
 bframes    = 3
 ref        = 1
 key_int    = 50

@@ -1,6 +1,7 @@
 import os
 import re
 import glob
+import datetime
 
 def AppendLine(input_f, line, b_cover_result=True):
     b_line_exists = False
@@ -55,3 +56,10 @@ def FindFileNameStartWith(path, name_start):
     if os.path.isfile(os.path.join(path, i)) and name_start in i:
       candidate_files.append(i)
   return candidate_files
+
+def getDateTime():
+    nowTime = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+    return nowTime
+
+if __name__ == '__main__':
+    print getDateTime()
