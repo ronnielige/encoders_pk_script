@@ -52,6 +52,7 @@ for p in as265_presets:
                      " --bpyramid 1" + \
                      " --ref %d"%ref + \
                      " --rc 8" + \
+                     " --aq-mode 0" + \
                      " --bitrate %d"%bitrate + \
                      " --rect 0" + \
                      " --amp  0" + \
