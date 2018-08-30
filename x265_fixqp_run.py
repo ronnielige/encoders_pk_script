@@ -36,8 +36,8 @@ for p in x265_presets:
             width  = yuv_resolution[yuv][0]
             height = yuv_resolution[yuv][1]
             fps    = yuv_fps[yuv]
-            out_log = "%sx265_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
-            bitstream =  "%sx265_%s_%s_qp%d.bin"%(out_path, yuv, p, qp)
+            out_log = "%sx265_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
+            bitstream =  "%sx265_%s_%s_fixqp%d.bin"%(out_path, yuv, p, qp)
             cmd    = x265_fullpath + \
                      " --preset %s"%p + \
                      " --tune psnr" + \
@@ -46,6 +46,8 @@ for p in x265_presets:
                      " --b-pyramid" + \
                      " --ref %d"%ref + \
                      " --qp %d"%qp + \
+                     " --ipratio 1.0" + \
+                     " --pbratio 1.0" + \
                      " --output %s"%bitstream + \
                      " --input-res %dx%d"%(width, height) + \
                      " --fps %d"%fps + \
@@ -70,6 +72,6 @@ for p in x265_presets:
 
         # collect result for this yuv
         for qp in fix_quant_qps:
-            out_log = "%sx265_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
+            out_log = "%sx265_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
             ana_result = x265_analyse(out_log)
             AppendLine(final_result_file, "        %7s           %9.2f     %5.2f  %5.2f  %5.2f     %6.2f"%(qp, ana_result[3], ana_result[0], ana_result[1], ana_result[2], ana_result[4]))

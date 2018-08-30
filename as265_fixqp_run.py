@@ -36,15 +36,15 @@ for p in as265_presets:
             width  = yuv_resolution[yuv][0]
             height = yuv_resolution[yuv][1]
             fps    = yuv_fps[yuv]
-            out_log = "%sas265_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
-            bitstream =  "%sas265_%s_%s_qp%d.bin"%(out_path, yuv, p, qp)
+            out_log = "%sas265_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
+            bitstream =  "%sas265_%s_%s_fixqp%d.bin"%(out_path, yuv, p, qp)
             cmd    = as265_fullpath + \
                      " --preset %s"%p + \
                      " --keyint %d"%key_int + \
                      " --bframes %d"%bframes + \
                      " --bpyramid 1" + \
                      " --ref %d"%ref + \
-                     " --rc 12" + \
+                     " --rc 0" + \
                      " --qp %d"%qp + \
                      " --rect 0" + \
                      " --amp  0" + \
@@ -76,6 +76,6 @@ for p in as265_presets:
 
         # collect result for this yuv
         for qp in fix_quant_qps:
-            out_log = "%sas265_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
+            out_log = "%sas265_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
             ana_result = as265_analyse(out_log)
             AppendLine(final_result_file, "        %7s           %9.2f     %5.2f  %5.2f  %5.2f     %6.2f"%(qp, ana_result[3], ana_result[0], ana_result[1], ana_result[2], ana_result[4]))

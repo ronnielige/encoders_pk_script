@@ -36,8 +36,8 @@ for p in x264_presets:
             width  = yuv_resolution[yuv][0]
             height = yuv_resolution[yuv][1]
             fps    = yuv_fps[yuv]
-            out_log = "%sx264_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
-            bitstream =  "%sx264_%s_%s_qp%d.bin"%(out_path, yuv, p, qp)
+            out_log = "%sx264_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
+            bitstream =  "%sx264_%s_%s_fixqp%d.bin"%(out_path, yuv, p, qp)
             cmd    = x264_fullpath + \
                      " --preset %s"%p + \
                      " --tune psnr" + \
@@ -46,6 +46,8 @@ for p in x264_presets:
                      " --b-pyramid normal" + \
                      " --ref %d"%ref + \
                      " --qp %d"%qp + \
+                     " --ipratio 1.0" + \
+                     " --pbratio 1.0" + \
                      " --output %s"%bitstream + \
                      " --input-fmt i420" + \
                      " --input-depth 8" + \
@@ -72,6 +74,6 @@ for p in x264_presets:
 
             # collect result for this yuv
         for qp in fix_quant_qps:
-            out_log = "%sx264_%s_%s_qp%d.log"%(out_path, yuv, p, qp)
+            out_log = "%sx264_%s_%s_fixqp%d.log"%(out_path, yuv, p, qp)
             ana_result = x264_analyse(out_log)
             AppendLine(final_result_file, "        %7s           %9.2f     %5.2f  %5.2f  %5.2f     %6.2f"%(qp, ana_result[3], ana_result[0], ana_result[1], ana_result[2], ana_result[4]))
