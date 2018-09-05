@@ -64,6 +64,7 @@ for p in x265_presets:
                      " --psnr" + \
                      " --frame-threads 1" + \
                      " --no-wpp" + \
+                     " --no-sao" + \
                      " --input %s"%yuv_fullpath[yuv]
             del_bitstream_cmd   = "python _CommonTools\\rm_file.py %s"%bitstream
 
