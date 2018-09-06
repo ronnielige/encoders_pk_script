@@ -15,7 +15,7 @@ if not os.path.exists(x265_fullpath):
     print "Error, x265 exe not exist."
     exit(1)
 
-final_result_file = out_path + "_x265_cbr_" + getDateTime() + ".log"
+final_result_file = out_path + "_x265_cbr_frm%d_"%enc_frames + getDateTime() + ".log"
 ClearFile(final_result_file)
 AppendLine(final_result_file, "       target bitrate     bitrate(kbps)   Y      U      V       enc_fps") # title
 

@@ -16,7 +16,7 @@ if not os.path.exists(hm265_fullpath):
     exit(1)
 hm_cfg_file = bin_path + "hm16_15cfg\\encoder_randomaccess_main_GOP48_FixQ_IBBBP_ref2.cfg"
 
-final_result_file = out_path + "_hm265_abr_" + getDateTime() + ".log"
+final_result_file = out_path + "_hm265_abr_frm%d_"%enc_frames + getDateTime() + ".log"
 ClearFile(final_result_file)
 AppendLine(final_result_file, "       target bitrate     bitrate(kbps)   Y      U      V       enc_fps") # title
 

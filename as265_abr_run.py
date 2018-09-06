@@ -14,7 +14,7 @@ if not os.path.exists(as265_fullpath):
     print "Error, as265 exe not exist."
     exit(1)
 
-final_result_file = out_path + "_as265_abr_" + getDateTime() + ".log"
+final_result_file = out_path + "_as265_abr_frm%d_"%enc_frames + getDateTime() + ".log"
 ClearFile(final_result_file)
 AppendLine(final_result_file, "       target bitrate     bitrate(kbps)   Y      U      V       enc_fps") # title
 
