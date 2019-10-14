@@ -60,7 +60,7 @@ for p in x265_presets:
                      " --input-res %dx%d"%(width, height) + \
                      " --fps %d"%fps + \
                      " --frames %d"%enc_frames + \
-                     " --log-level full" + \
+                     " --log-level debug" + \
                      " --psnr" + \
                      " --frame-threads 1" + \
                      " --no-wpp" + \

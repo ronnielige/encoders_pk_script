@@ -63,7 +63,7 @@ for p in x264_presets:
                      " --fps %d"%fps + \
                      " --frames %d"%enc_frames + \
                      " --verbose" + \
-                     " --log-level info" + \
+                     " --log-level debug" + \
                      " --psnr" + \
                      " --threads 1" + \
                      " %s"%yuv_fullpath[yuv]
