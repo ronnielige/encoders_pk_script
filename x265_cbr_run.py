@@ -1,4 +1,3 @@
-
 import os
 import sys
 sys.path.append("_CommonTools")
@@ -65,6 +64,9 @@ for p in x265_presets:
                      " --frame-threads 1" + \
                      " --no-wpp" + \
                      " --no-sao" + \
+                     " --no-open-gop" + \
+                     " --no-scenecut " + \
+                     " --b-adapt 0 " + \
                      " --input %s"%yuv_fullpath[yuv]
             del_bitstream_cmd   = "python _CommonTools\\rm_file.py %s"%bitstream
 
