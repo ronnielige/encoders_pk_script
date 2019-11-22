@@ -8,7 +8,12 @@ from config import *
 from TaskManager import *
 from analyse_as265_log import *
 from Tools import *
+
+worker_number = 2
 TM = TaskManager(worker_number)
+out_path = "output_as265P5_cutreeoff\\"
+CheckPath(out_path, 1)
+
 
 as265_fullpath = bin_path + as265_exe
 if not os.path.exists(as265_fullpath):
@@ -32,6 +37,7 @@ for p in as265_presets:
         for bitrate in bitrate_array:
             total_task_num = total_task_num + 1
 
+as265_presets=[5,]
 # ******** CBR *******
 for p in as265_presets:
     AppendLine(final_result_file, "\nPreset %d"%p)
@@ -69,6 +75,7 @@ for p in as265_presets:
                      " --psnr 1" + \
                      " --frame-threads 1" + \
                      " --wpp-threads 0" + \
+                     " --cutree 0 " + \
                      " --input %s"%yuv_fullpath[yuv]
             del_bitstream_cmd = "python _CommonTools\\rm_file.py %s"%bitstream
             del_pinfo_cmd     = "python _CommonTools\\rm_file.py *info_as265*"
