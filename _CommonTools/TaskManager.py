@@ -93,6 +93,7 @@ class TaskManager:
         outFile = open(outFileNameList[commandIdx], 'w')
         if commandList[commandIdx] != "":  # empty command
           self.m_LogOut.warn("Add new task: " + commandList[commandIdx] + '\n')
+          outFile.write(commandList[commandIdx] + "\n\n")
           self.TaskKeeper.update({commandList[commandIdx]: subprocess.Popen(commandList[commandIdx], shell=True, stdout=outFile, stderr=outFile)})
       else:
         if commandList[commandIdx] != "":  # empty command
